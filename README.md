@@ -18,7 +18,7 @@ n is a positive integer, which is in the range of [1, 10000].
 
 All the integers in the array will be in the range of [-10000, 10000].
 
-## Problem2 Subarray sum equals k (https://leetcode.com/problems/subarray-sum-equals-k/)
+## Problem2 Maximum Subarray (https://leetcode.com/problems/maximum-subarray/)
 
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
