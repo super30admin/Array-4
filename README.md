@@ -17,7 +17,9 @@ Note:
 n is a positive integer, which is in the range of [1, 10000].
 
 All the integers in the array will be in the range of [-10000, 10000].
-
+<br> Space Complexity:O(1)
+ <br>    Time Complexity: O(nlogn)+O(n/2): O(nlogn) 
+<br> Approach- Sort the array and find the alternate numbers from 0,2,4,..... and take its sum.
 ## Problem2 Maximum Subarray (https://leetcode.com/problems/maximum-subarray/)
 
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
