@@ -31,7 +31,9 @@ Input: [-2,1,-3,4,-1,2,1,-5,4],
 Output: 6
 
 Explanation: [4,-1,2,1] has the largest sum = 6.
-
+<br> Space Complexity:O(1)
+<br> Time Complexity:O(n)
+<br> Approach: traverse the array and store the max sum so-far to comapre with the new max value.
 
 ## Problem3  Next permutation(https://leetcode.com/problems/next-permutation/)
 
@@ -42,6 +44,7 @@ If such arrangement is not possible, it must rearrange it as the lowest possible
 The replacement must be in-place and use only constant extra memory.
 
 Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
+<br> not able to solve this problem
 
 1,2,3 → 1,3,2
 
