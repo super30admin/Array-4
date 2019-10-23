@@ -1,50 +1,48 @@
 /* Problem Statement:
 
 VERIFIED ON LEETCODE PLATFORM 
-561. Array Partition I
+53. Maximum Subarray
 Easy
 
-Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
-Example 1:
+Example:
 
-Input: [1,4,3,2]
+Input: [-2,1,-3,4,-1,2,1,-5,4],
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
 
-Output: 4
-Explanation: n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).
+Follow up:
 
-Note:
+If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 
-    n is a positive integer, which is in the range of [1, 10000].
-    All the integers in the array will be in the range of [-10000, 10000].
-
-
- * Solution 1: using sorting  
-   Time Complexity : O(nlogn)
+ * Solution 1: using dynamic programming 
+   Time Complexity : O(n)
  * Space complexity :O(1)
  */
 
 class Solution {
 public:
-    int arrayPairSum(vector<int>& nums) {
+    int maxSubArray(vector<int>& nums) {
         int len = nums.size();
-        int final_ans = 0;
-        int idx = 0;
-      
-        /* corner cases */
-        if (len == 0) {
-            return final_ans;
-        } else if (len == 1) {
-            return nums[0];
-        }  
-        /* sort the array */
-        sort(nums.begin(), nums.end());
+        int max_sum = 0;
+        int curr_sum = 0;
+        int idx;
         
-        /* find min among pairs one at a time and add it to final answer */
-        for (idx = 0; idx < len; idx+=2) {
-            final_ans += min(nums[idx],nums[idx+1]);
+        if (len == 0) {
+            return max_sum;
         }
-        return final_ans;
+        
+        max_sum = nums[0];
+        curr_sum = nums[0];
+        /* store max sum and curr sum */
+        for (idx=1;idx < len; idx++) {
+            /* update curr_sum as max of the current num or by combining it with previous one */
+            curr_sum = max(curr_sum + nums[idx], nums[idx]);
+            /* update max sum accordingly */
+            max_sum = max(max_sum, curr_sum);
+        }
+        return max_sum;
     }
 };
 /* Execute on leetcode platform */
