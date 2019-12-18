@@ -15,7 +15,7 @@ class NextPermutation {
                 break;
             }
         }
-        if(index == -1){Arrays.sort(nums);return;}
+        if(index == -1){reverse(nums,0,nums.length-1);return;}
         int i = index + 1;
         System.out.println(index);
         while(i < nums.length && nums[i] > nums[index]){
