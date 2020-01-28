@@ -1,5 +1,5 @@
 /**
-LeetCode Submitted : No (178/256) test cases passed
+LeetCode Submitted : No (178/256) test cases passed (Dont want to look for optimal soln)
 Time Complexity : O(N)
 Space Complexity : O(1)
 
