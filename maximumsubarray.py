@@ -1,5 +1,5 @@
 # Time Complexity : O(n)
-# Space Complexity : O(n)
+# Space Complexity : O(1)
 # Did this code successfully run on Leetcode : Yes
 class Solution(object):
     def maxSubArray(self, nums):
@@ -10,16 +10,18 @@ class Solution(object):
         if nums == None or len(nums)==0:
             return 0
         
-        maxsubarray = [0]*(len(nums)+1)
-        maxsubarray[0] = 0
-        maxvalue = float('-inf')
-        for i in range(1,len(maxsubarray)):
+        globalMax = float('-inf')
+        runningSum = 0
+        
+        for i in range(len(nums)):
+            runningSum = max(nums[i],runningSum+nums[i])
+            globalMax = max(globalMax,runningSum)
             
-            maxsubarray[i] = max(maxsubarray[i-1]+nums[i-1], nums[i-1])
-            maxvalue = max(maxvalue, maxsubarray[i])
+        return globalMax
             
-        return maxvalue
+        
             
+        
             
         
             
