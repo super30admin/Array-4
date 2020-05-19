@@ -1,0 +1,18 @@
+Time complexity: O(nlgn)
+Space complexity: O(1)
+Did this code successfully submitted on leetcode: Yes
+
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int slow=0;
+        int sum = 0;
+        
+        while(slow<nums.length){
+            sum += nums[slow];
+            slow+=2;
+        }
+        
+        return sum;
+    }
+}
