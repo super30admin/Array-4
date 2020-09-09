@@ -1,0 +1,20 @@
+Approach 1 : Permute all the possible pairs and calculate the min and curr_sum. Compare this with global sum and return the max global sum
+Time complexity : O(n!) -- Performing the pairs
+Space Complexity : O(1) - Constant Extra Space is used.
+Approach 2 : If we sort the array , we can have the pairs in such a way that min(i,i+1) will not be greatly differed.
+Time Complexity : O(nlogn); we iterate through the arry only once
+Space Complexiy : O(1)
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        // Edge Case
+        if(nums==null || nums.length==0) return 0;
+        // Logic
+        Arrays.sort(nums); // Sorting intution is from brute force in which we permute all the possible pairs. 
+        int global_sum=0;
+        for(int i=0;i<nums.length;i+=2){
+            global_sum=nums[i]+global_sum;
+        }
+        return global_sum;
+        
+    }
+}
