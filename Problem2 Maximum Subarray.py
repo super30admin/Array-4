@@ -16,28 +16,29 @@ class Solution:
         return globalSum
     
     #Approach in case we need to find the subarray as well
-    if not nums or len(nums)==0:
-        return 0
-    
-    maintain these two posinters for getting max subarray
-    
-        start=0
-        end=0
+    def maxSubArray(self, nums: List[int]) -> int:
+        if not nums or len(nums)==0:
+            return 0
 
-        maxSum=nums[0]
-        #Running Sum
-        rSum=nums[0]
-        k=0
-        for i in range(1,len(nums)):
-            rSum=nums[i]+rSum
-            #in case when current element value is greater than running sum
-            if rSum<nums[i]:
-                rSum=nums[i]
-                k=i
-            if rSum>maxSum:
-                maxSum=rSum
-                start=k
-                end=i
-        print("start of max subarray: ",start)
-        print("end of max subarray: ", end)
-        return maxSum
+        maintain these two posinters for getting max subarray
+
+            start=0
+            end=0
+
+            maxSum=nums[0]
+            #Running Sum
+            rSum=nums[0]
+            k=0
+            for i in range(1,len(nums)):
+                rSum=nums[i]+rSum
+                #in case when current element value is greater than running sum
+                if rSum<nums[i]:
+                    rSum=nums[i]
+                    k=i
+                if rSum>maxSum:
+                    maxSum=rSum
+                    start=k
+                    end=i
+            print("start of max subarray: ",start)
+            print("end of max subarray: ", end)
+            return maxSum
