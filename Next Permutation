@@ -1,0 +1,50 @@
+Approach 1 :Permute all possible combinations using backtracking and have them in the list. sort the list and pop the first one.
+Time Complexity :O( n!)
+Space Complexity :O(n) Since an array will be used to store the permutations. 
+Approach 2: Since we need a greater permutation than original then we need find out breaches at every point.
+Time Complexity :O(n) ----- > O(n)+O(n)+O(n)=O(3n)=O(n)
+Space Complexity :O(1)
+class Solution {
+    public void nextPermutation(int[] nums) {
+        // Edge Case
+        if (nums.length==0 || nums==null) return;
+        //logic 
+        // Step 1 : find the breach
+        int n = nums.length;
+        int i=n-2;
+        while(i>=0 && nums[i]>=nums[i+1]){
+            i--;
+        }
+        // or i=-1 , while loop stops
+        // Step 2 - Replace the breach with nearest greater number
+        int j=n-1 ; // Last element
+        if(i>=0){
+            while(nums[j]<=nums[i]){
+                j--;
+                
+            }
+            swap(nums,i,j);
+        }
+        // Step 3 : Reverse the nums from i+1 to end (n-1)
+        reverse(nums,i+1,n-1);
+        
+    }
+    public void swap(int nums[],int i,int j){
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;       
+    }
+    public void reverse(int nums[],int start, int end){
+                                               //s   e
+        while(start<end){// 2476531 ~ reverse 25 76431
+            swap(nums,start,end);
+            start++;end--;
+        }
+    }
+}
+// Greatest Permutaion of 2476531 is 2513467 and so on...
+// Step 1 : Find the breach at each and every point in the nums
+// Note : if there is no brreach then it would be the largest number //itself. Skip step2 . Step3 as is reverse the i+1 numbers to n.
+// Step 2 : find what to replace with ??
+// Step 3: After replace you can't really say it would be next largest integer . Hence the numbers after that which are in decreasing order(sorted) needs to be reversed
+

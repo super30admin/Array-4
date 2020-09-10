@@ -1,0 +1,98 @@
+Approach 1 :Brute Force to iterate through nested loops to find the sum of all possible sub arrays and compare with global Maximum
+Time Complexity :O(n^3) 
+Space Complexity :O(1)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        // Edge Case
+        if(nums==null || nums.length==0) return 0;
+        // Logic. calculate the sum of all possible sub arrays
+        int max_sum=Integer.MIN_VALUE;
+        for(int i=0; i<nums.length;i++){
+            for(int j=i;j<nums.length;j++){
+                int curr_sum=0;
+                for(int k=i;k<=j;k++){
+                    curr_sum+=nums[k];
+                }
+                max_sum=Math.max(max_sum,curr_sum);
+                
+            }
+        }
+        return max_sum;
+        
+    }
+}
+Approach 2: Maintaining running sum
+Time Complexity : O(n^2)
+Space Complexity: O(1)
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+         // Edge Case
+        if(nums==null || nums.length==0) return 0;
+        int max_sum=Integer.MIN_VALUE;
+        //logic
+        for(int left=0;left<nums.length;left++){// Forming window
+            int running_sum=0;
+            for(int right=left;right<nums.length;right++){
+                running_sum+= nums[right];
+                
+                max_sum=Math.max(max_sum,running_sum);
+            }                              
+        }
+        return max_sum;        
+        
+    }
+}
+
+Approach 3 : 
+Time Complexity :O(n)
+Space Complexity :O(1)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        // Edge case
+        if(nums.length==0 || nums==null) return 0;
+        // Logic
+        int max_sum=nums[0];// Element itself forming the max_sum
+        int rsum=nums[0];
+        for(int i=1;i<nums.length;i++){
+            rsum=Math.max(nums[i]+rsum,nums[i]);
+            max_sum=Math.max(max_sum,rsum);
+        }
+        return max_sum;
+        
+    }
+}
+// rsum                       globalsum
+// nums[0]                    nums[0]
+// Max(nums[1]+rsum,nums[1])  max()
+// max(nums[2]+rsum,nums[2])  max()
+
+Follow up Question :
+Find the maximum Array
+class Solution {
+    public int maxSubArray(int[] nums) {
+        // Edge case
+        if(nums.length==0 || nums==null) return 0;
+        // Logic
+        int start=0; int end=0 ; // Pointers for global max sub Array
+        int k=0; // Pointer to iterate through the local Array.
+        int max_sum=nums[0]; int r_sum=nums[0];
+        for(int i=1;i<nums.length;i++){
+            r_sum=nums[i]+r_sum;// Running sum
+            if(r_sum<nums[i]){//if(nums[i] is better on its own
+                r_sum=nums[i];// contiguous sub Array
+                k=i;//resetting the contiguous sub array pointer to i
+            }
+            if(r_sum>max_sum){// if i have Math.max(max_sum , r_sum) , i cannot move the pointers
+                max_sum=r_sum;
+                start=k; end=i;// Pointers at the max sub Array
+            }
+            
+        }
+        System.out.println(start);
+        System.out.println(end);
+        return max_sum;
+        
+    }
+}
+
