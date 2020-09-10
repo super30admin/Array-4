@@ -69,4 +69,30 @@ class Solution {
 
 Follow up Question :
 Find the maximum Array
+class Solution {
+    public int maxSubArray(int[] nums) {
+        // Edge case
+        if(nums.length==0 || nums==null) return 0;
+        // Logic
+        int start=0; int end=0 ; // Pointers for global max sub Array
+        int k=0; // Pointer to iterate through the local Array.
+        int max_sum=nums[0]; int r_sum=nums[0];
+        for(int i=1;i<nums.length;i++){
+            r_sum=nums[i]+r_sum;// Running sum
+            if(r_sum<nums[i]){//if(nums[i] is better on its own
+                r_sum=nums[i];// contiguous sub Array
+                k=i;//resetting the contiguous sub array pointer to i
+            }
+            if(r_sum>max_sum){// if i have Math.max(max_sum , r_sum) , i cannot move the pointers
+                max_sum=r_sum;
+                start=k; end=i;// Pointers at the max sub Array
+            }
+            
+        }
+        System.out.println(start);
+        System.out.println(end);
+        return max_sum;
+        
+    }
+}
 
