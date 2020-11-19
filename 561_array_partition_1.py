@@ -2,7 +2,7 @@
 Leetcode: https://leetcode.com/problems/array-partition-i/
 
 Approach: Using Sorting
-Time complexity : O(nlog(n)). Sorting takes O(nlog(n)) time. We iterate over the array only once.
+Time complexity : O(n log(n)). Sorting takes O(n log(n)) time. We iterate over the array only once.
 Space complexity : O(1). Constant extra space is used.
 """
 
@@ -15,3 +15,4 @@ class Solution:
             sum += nums[i]
 
         return sum
+
