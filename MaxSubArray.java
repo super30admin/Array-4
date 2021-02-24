@@ -8,20 +8,28 @@
 class Solution {
     public int maxSubArray(int[] nums) {
 
-        int max = Integer.MIN_VALUE;
-        int sum = 0;
+        if(nums.length == 0){
+            return 0;
+        }
 
-        for(int i=0;i<nums.length;i++){
-            // to maximize the sum, the current sum should be positive
-            if(sum > 0){
+        int max = nums[0];
+        int sum = nums[0];
+
+        for(int i=1;i<nums.length;i++){
+
+            // if the current number adds value to the current sum
+            if(sum + nums[i] > nums[i]){
                 sum += nums[i];
             }
-            // reset the sum
+            // if current number doesnt add value to the current sum
             else{
                 sum = nums[i];
             }
+
             max = Math.max(max,sum);
         }
+
         return max;
+
     }
 }
