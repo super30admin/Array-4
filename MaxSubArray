@@ -1,0 +1,51 @@
+//TC-o(n)
+//SC-o(1)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        
+        if(nums == null || nums.length == 0)
+            return 0;
+        
+        int CurrSum = nums[0];
+        int result = nums[0];
+        for (int i=1; i<nums.length; i++) {
+            //Check currsum is bigger or nums[i].
+            CurrSum = Math.max(nums[i],CurrSum+nums[i]);
+            //check earlier max is max or currSum
+            result = Math.max(result,CurrSum);
+        }
+        return result;
+    }
+}
+
+//follow up question
+//TC-o(n)
+//SC-o(1)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        
+        if(nums == null || nums.length == 0)
+            return 0;
+        
+        int currSum = nums[0];
+        int result = nums[0];
+        int currStart = 0;
+        int start =0, end = 0;
+        for (int i=1; i<nums.length; i++) {
+            currSum = currSum+nums[i];
+            //Check currsum is bigger or nums[i].
+            if(currSum <= nums[i]) {
+                currSum = nums[i];
+                currStart = i;
+            }
+            //check earlier max is max or currSum
+            if(result <= currSum){
+                result = currSum;
+                start = currStart;
+                end = i;
+            }
+            
+        }
+        //System.out.println("start" + start + "end:" + end);
+        return result;
+    }

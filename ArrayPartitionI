@@ -1,0 +1,19 @@
+//TC - o(nlogn)
+//SC-o(1)
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        //edge
+        if(nums == null || nums.length == 0)
+            return 0;
+        //while considering min element we always ignore other onr
+        //so choose a min between pair which are closer to each other
+        Arrays.sort(nums);
+        int sum = 0;
+        for(int i = 0; i<nums.length; i=i+2) {
+            //we will be adding even numbers
+            //bcs 0,2... will be smaller thn 1,3...
+            sum +=nums[i];
+        }
+        return sum;
+    }
+}
