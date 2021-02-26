@@ -1,0 +1,15 @@
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
+        # sort the array
+        nums.sort();
+        ans = 0;
+        # pick 1st element of every pair of two elements and add it to the answer
+        for i in range(0,len(nums),2):
+            ans += nums[i];
+        return ans;
+    
+    '''
+    time complexity = O(nlogn)
+    space complexity = O(1);
+    '''
+            
