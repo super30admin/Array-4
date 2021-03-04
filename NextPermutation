@@ -1,0 +1,39 @@
+/**
+*Time complexity : O(n) = O(n) for while loop + O(n-k) for second loop + O(n) for swap + O(n) for reverese
+* Space complexity : No extra space is created
+*/
+class Solution {
+    public void nextPermutation(int[] nums) {
+        if(nums==null || nums.length==0) return;
+        
+        int i=nums.length-2; int j=nums.length-1;
+        
+        while(i>=0 && nums[i]>=nums[j]){
+            i--;
+            j--;
+            
+        }
+        if(i>=0){
+            j=nums.length-1;
+            while(nums[i]>=nums[j]){
+                j--;
+            }
+            swap(nums,i,j);
+        }
+        
+        reverse(nums,i+1,nums.length-1);
+    }
+    
+    private void reverse(int[] nums, int l, int r){
+        while(l<=r){
+        swap(nums,l,r);
+        l++; r--;  
+    }
+    }
+    
+    private void swap(int[] nums, int i,int j){
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;        
+    }
+}
