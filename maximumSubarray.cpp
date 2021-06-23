@@ -1,7 +1,6 @@
 /*
 The idea is that we can start a subarray from the current Index or continue with previous subarray
 ///////////////////////////////////////////
-Solution 1: Can be done with map
 Time Complexity : O(N), Total number of elements
 Space Complexity : O(1)
 */
@@ -39,11 +38,7 @@ public:
                 startIndex = currIndex;
                 maxSoFar = maxEndingHere;
                 endIndex = i;
-            
-            
             }
-            
-            
             maxEndingHere = max( nums[i], nums[i]+ maxEndingHere);
             maxSoFar = max( maxSoFar, maxEndingHere);
         }
