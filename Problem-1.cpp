@@ -10,7 +10,7 @@ public:
         sort(nums.begin(),nums.end());
         for(i=0;i<nums.size();i+=2)
         {
-            sum+=min(nums[i],nums[i+1]);
+            sum+=nums[i];
         }
         return sum;
     }
