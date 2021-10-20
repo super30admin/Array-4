@@ -1,4 +1,4 @@
-# // Time Complexity : O(n) where m,n are the number of rows,cols of the matrix
+# // Time Complexity : O(nlgn) where m,n are the number of rows,cols of the matrix
 # // Space Complexity : O(1) 
 # // Did this code successfully run on Leetcode : yes
 # // Any problem you faced while coding this : none
