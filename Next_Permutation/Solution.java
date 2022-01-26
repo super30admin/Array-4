@@ -6,7 +6,7 @@
 
 // Your code here along with comments explaining your approach
 /**
- * For last 2nd last index, we search if there is any index i, such that nums[i] < nums[i+1].
+ * For 2nd last index, we search if there is any index i, such that nums[i] < nums[i+1].
  * If yes, we replace the number at index, i with immediate greater element than nums[i] lies between i+1 and end of array
  * Once, we have replaced, we reverse the elements from i+1 to end of array.
  * We do this because, next greater number will be formed, by replacing 1st smallest digit from right to left, by 2nd smallest digit from right to left
