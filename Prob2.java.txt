@@ -1,0 +1,27 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        
+        if(nums == null || nums.length == 0)
+            return 0;
+        
+        int start =0,end =0;
+        int cs = 0;
+        int rSum = nums[0],max = nums[0];
+        
+        for(int ce=1;ce<nums.length;ce++){
+            rSum+=nums[ce];
+            if(rSum < nums[ce]){
+                cs = ce;
+                rSum = nums[ce];
+            }
+            
+            if(max < rSum){
+                max = rSum;
+                start = cs;
+                end = ce;
+            }
+        }
+        System.out.println(start+"   "+end);
+        return max;
+    }
+}
