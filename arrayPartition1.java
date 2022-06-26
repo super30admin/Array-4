@@ -1,6 +1,6 @@
 /*
 Problem: https://leetcode.com/problems/array-partition-i/
-TC: O(n)
+TC: O(n log n)
 */
 class Solution {
     public int arrayPairSum(int[] nums) {
