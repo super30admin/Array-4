@@ -1,0 +1,12 @@
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
+        n = len(nums)
+        res = 0
+        nums.sort()
+        for i in range(n - 2, -1, -2):
+            res += nums[i]
+        return res
+    
+# Time Complexity: O(n^2)
+# Space Complexity: O(1)
+# Successfully implemented on Leetcode
