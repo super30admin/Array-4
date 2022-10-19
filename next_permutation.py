@@ -1,3 +1,6 @@
+#Time -> O(n)
+#Space -> O(1)
+
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
         """
