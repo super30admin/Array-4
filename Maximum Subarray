@@ -1,0 +1,15 @@
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        a = 0
+        b = float('-inf')
+        for num in nums:
+            if a + num > 0:
+                a += num
+                b = max(b, a)
+            else:
+                a = 0
+        return b if b != float('-inf') else max(nums)
+    
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+# Successfully implemented on Leetcode
