@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+     int maxcount = nums[0];
+        int rsum = nums[0];
+        for( int i=1;i<nums.size();i++){
+            rsum = max(rsum+nums[i], nums[i]);
+            cout<<rsum<< "rsum " << i << " ----"<<endl;
+            maxcount = max(maxcount,rsum);
+            cout<<maxcount<< "maxcount " << i << " ----"<<endl;
+        }
+        return maxcount;
+    }
+};
+
