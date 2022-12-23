@@ -1,24 +1,16 @@
-//TC: O(n)
-//SC: O()
-public class Solution {
+//TC: O(nlogn)
+//SC: O(1)
 
-	public int arrayPairSum(int[] nums) {
-		int[] exist = new int[20001];
-		for (int i = 0; i < nums.length; i++) {
-			exist[nums[i] + 10000]++;
-		}
-		int sum = 0;
-		boolean odd = true;
-		for (int i = 0; i < exist.length; i++) {
-			while (exist[i] > 0) {
-				if (odd) {
-					sum += i - 10000;
-				}
-				odd = !odd;
-				exist[i]--;
-			}
-		}
-		return sum;
-	}
+	class Solution {
+        public int arrayPairSum(int[] nums) {
+         Arrays.sort(nums);
+            int sum=0;
+            for(int i=0;i<nums.length;i++){
+                if(i==0 || i%2==0){
+                    sum+=nums[i];
+                }
+                }
+            return sum;
+    }
+    }
 	
-}
