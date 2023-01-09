@@ -6,3 +6,4 @@ class Solution:
             summ += nums[i]
 
         return summ
+
