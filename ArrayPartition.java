@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/array-partition
-//TC: o(n)
+//TC: o(nlogn)
 //SC: O(1)
 
 class Solution {
