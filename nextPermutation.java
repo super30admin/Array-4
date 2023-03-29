@@ -1,4 +1,15 @@
-//TC: //O(n)
+// Time Complexity : O(N)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+/**
+ * Find the lowest number from the right by checking if it is less than the next
+ * number. then find the next immediate higher number for the current obtained
+ * number and swap those two numbers. Then reverse the array from the current
+ * number + 1 position.
+ *
+ */
 class Solution {
     public void nextPermutation(int[] nums) {
         if(nums == null || nums.length == 0) return;
