@@ -1,0 +1,31 @@
+// Time Complexity o(n) Space complexity o(1) 
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int n=nums.length;
+        int i = n-2;
+        while(i>=0 && nums[i]>=nums[i+1]){
+            i--;
+        }
+        int j=n-1;
+        if(i>=0){
+            while(nums[i]>= nums[j]){
+                j--;
+            }
+            swap(i,j,nums);
+            
+        }
+        reverse(i+1,n-1,nums);
+    }
+    public void swap(int s,int e, int[] nums){
+        int temp=nums[s];
+        nums[s]=nums[e];
+        nums[e]=temp;
+    }
+    public void reverse(int s,int e,int[] nums){
+        while(s<e){
+          swap(s,e,nums);
+          s++;
+          e--;
+        }
+    }
+}
