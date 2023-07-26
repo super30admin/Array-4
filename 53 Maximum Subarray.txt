@@ -1,0 +1,43 @@
+//53. Maximum Subarray
+//TC O(n) SC O(1)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int currSum=nums[0];
+        int max=nums[0];
+        for(int i=1;i<nums.length;i++){
+            currSum=Math.max(currSum+nums[i],nums[i]);
+            max=Math.max(max,currSum);
+        }
+        return max;
+        
+    }
+}
+
+//printing values in the range 
+// class Solution {
+//     public int maxSubArray(int[] nums) {
+//         int currSum=nums[0];
+//         int max=nums[0];
+//         int startCurr=0,start=0,end=0;
+//         for(int i=1;i<nums.length;i++){
+//             currSum+=nums[i];
+//             if(currSum<nums[i]){
+//                 currSum=nums[i];
+//                 startCurr=i;
+//             }
+//             if(max<currSum){
+//                 max=currSum;
+//                 start=startCurr;
+//                 end=i;
+//             }
+//         }
+//         // System.out.print(start);
+//         // System.out.print(end);
+//         for(int i=start;i<=end;i++){
+//            System.out.print(nums[i]); 
+//         }
+
+//         return max;
+        
+//     }
+// }
