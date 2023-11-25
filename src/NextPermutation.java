@@ -20,7 +20,7 @@ class Solution {
             nums[i] = (nums[i]+nums[j]) - (nums[j]=nums[i]);       // swap 4 with 3, [1,6,8,7,4,5,3,2]
         }
 
-        reverse(nums, i+1, j);                                     // reverse (5,3,2), [1,6,8,7,4,2,3,5]
+        reverse(nums, i+1, n-1);                                   // reverse (5,3,2), [1,6,8,7,4,2,3,5]
 
     }
 
