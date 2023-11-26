@@ -1,7 +1,7 @@
 // ******************** Without Sorting, used bucket sort ********************
 
 // Time Complexity:  O(n)
-// Space Complexity: O(m)
+// Space Complexity: O(1)
 //
 // where n is length of given array, m is maximum value in given array
 
