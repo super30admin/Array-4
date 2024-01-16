@@ -1,4 +1,4 @@
-//T.C O(1) -- O(10) in specific, because max num of integers in Integer MAX value is 10
+//T.C O(n) -- size of array
 //S.C O(1)
 
 //Observing the expected result, for next permutation, identify the breach from the end, if there is breach, swap the
