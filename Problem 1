@@ -1,0 +1,15 @@
+#Array Partition
+
+This solution has a time complexity of O(n log n) due to the sorting operation, where n is the length of the input array nums. However, it's the most efficient approach to solve this problem. 
+The space complexity is O(1) because we only use a constant amount of extra space regardless of the input size.
+
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
+        nums.sort()  # Sort the array
+        total_sum = 0
+        
+        # Pair consecutive elements starting from index 0
+        for i in range(0, len(nums), 2):
+            total_sum += nums[i]
+        
+        return total_sum
