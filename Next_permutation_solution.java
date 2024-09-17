@@ -1,0 +1,33 @@
+package codes;
+
+public class Next_permutation_solution {
+	    public void nextPermutation(int[] nums) {
+	        if(nums==null||nums.length<=1) return;
+	        
+	        // the breakpoint can be no more than nums.length-2
+	        int i=nums.length-2;
+	        // Find the breakPoint
+	        while(i>=0&&nums[i]>=nums[i+1]) i--;
+	        if(i>=0){
+	            int j=nums.length-1;
+	            while(nums[j]<=nums[i]) j--;
+	            swap(nums,i,j);
+	        }
+	        reverse(nums,i+1,nums.length-1);
+	        
+	    }
+	    
+	    
+	    
+	public void swap(int [] A,int i, int j){
+	    int tmp=A[i];
+	    A[i]=A[j];
+	    A[j]=tmp;
+	}
+	    
+	    
+	public void reverse(int [] A, int i,int j){
+	    while(i<j) swap(A, i++,j--);
+	}
+	}
+
