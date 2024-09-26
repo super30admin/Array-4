@@ -1,0 +1,45 @@
+//Timecomplexity:- O(n).
+//Space complexity:- O(m) where m<n;
+//Did it run on leetcode:- Yes.
+//Your code with approach:- Generally lexicographically next permutation will always have a upward v shape when plottedin graph
+//so to that next permutation we need to find an elemnt which is immediately greater than i=1 th term. after find we will swap and reverse
+//from i+1 to nums.length-1. For reversing I used stack but to get in 0(1) space we can call iteratively change function
+// with current pointer i+1 and j to be nums.length-1;
+
+class Solution {
+    Stack<Integer> cache=new Stack<>();
+    public void nextPermutation(int[] nums) {
+       int i=nums.length-2;
+        int j=nums.length-1;
+        while(i>=0&&nums[i+1]<=nums[i]){
+            i--;
+        }
+        if(i>=0){
+            
+            while(nums[j]<=nums[i]){
+                j--;
+            }
+            change(nums,i,j);
+        }
+        reverse(nums,i+1);
+    }
+    private void change(int[] nums,int i, int j){
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
+        
+    }
+    private void reverse(int[] nums,int i){
+        int j=i;
+        while(i<nums.length){
+            cache.push(nums[i]);
+            i=i+1;
+        }
+        while(j<nums.length){
+            nums[j]=cache.peek();
+            cache.pop();
+            j++;
+            
+        }
+    }
+}
