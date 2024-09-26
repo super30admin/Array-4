@@ -1,0 +1,88 @@
+//Next Permutation
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach
+class Solution {
+    public void nextPermutation(int[] nums) {
+             if(nums.length==0 || nums==null)
+                 return;
+        int peak_index=nums.length-2;
+        while(peak_index>=0 && nums[peak_index]>=nums[peak_index+1]){
+            peak_index -=1;
+        }
+        if(peak_index>=0)
+        {   
+            int peak_elem=nums.length-1;
+            while(peak_elem>=0 && nums[peak_elem]<=nums[peak_index])
+            {
+                peak_elem--;
+            }
+            swap(nums,peak_index,peak_elem);
+        }
+            reverse(nums,peak_index+1,nums.length-1);
+        }
+    private void reverse(int[] nums, int start,int end)
+    {
+        while(start<end)
+        {
+            swap(nums,start,end);
+            start++;
+            end--;
+        }
+    }
+    private void swap(int[] nums, int x, int y)
+    {
+        int temp=nums[x];
+        nums[x]=nums[y];
+        nums[y]=temp;
+    }
+    
+    
+}
+//Max subarray
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach
+class Solution {
+    public int maxSubArray(int[] nums) {
+      int curr_sum=0;
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<nums.length;i++)
+        {
+            curr_sum=Math.max(curr_sum+nums[i],nums[i]);
+            max=Math.max(curr_sum,max);
+        }
+        return max;
+    }
+}
+//ArrayPartition1
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        if(nums.length==0||nums==null)
+        {
+            return 0;
+        }
+        Arrays.sort(nums);
+        int curr_sum=0;
+        for(int i=0;i<nums.length;i=i+2)
+        {
+            curr_sum+=nums[i];
+        }
+        return curr_sum;
+    }
+}
