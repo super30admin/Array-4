@@ -1,0 +1,15 @@
+Time: O(n)
+Space: O(1)
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int rSum =0;
+        for(int num: nums)
+        {
+            rSum = Math.max(rSum + num, num);
+            max = Math.max(rSum,max);
+        }
+        return max;
+    }
+}
