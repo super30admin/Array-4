@@ -1,0 +1,26 @@
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :Already discussed in class
+
+
+// Your code here along with comments explaining your approach
+
+
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        //Initialze 2 var's to first array element
+        //currMax: Keeps track of sum of 2 elements in the array
+        //Overall: This value gets updated only when currMax value gets updated to higher value
+        int currMax=nums[0];
+        int overAllMax=nums[0];
+        
+        //Iterate over array to find maximum subarray sum
+        for(int i=1; i<nums.length;i++){
+            currMax = Math.max(currMax + nums[i], nums[i]);
+            overAllMax = Math.max(currMax,overAllMax);
+        }
+        return overAllMax;
+    }
+}
