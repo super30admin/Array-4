@@ -1,0 +1,35 @@
+class Solution {
+public:
+    
+    void reverse(vector<int>& nums, int start, int end){
+        while(start < end){
+            swap(nums[start], nums[end]);
+            start++;
+            end--;
+        }
+    }
+    
+    void nextPermutation(vector<int>& nums) {
+        int n = nums.size();
+        int index = -1 ;  // what if it is last permutation so we need to get back to first one by reversing all the digits
+       
+        for(int i = n-1; i >0 ; i--){
+            if (nums[i] > nums[i-1] ){
+                index = i-1;
+                break;
+            }
+        }
+        
+        if(index != -1 ){
+            for(int j = n-1 ; j > index; j--){
+                if(nums[j]>nums[index]){
+                    swap(nums[index],nums[j]);
+                    break;
+                }
+            }
+        }
+        
+        reverse(nums, index+1, n-1);
+        
+    }
+};
