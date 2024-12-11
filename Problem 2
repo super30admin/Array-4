@@ -1,0 +1,20 @@
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        l = 0
+        r = 0
+        res = float('-inf')  # Initialize res to negative infinity for comparison
+        prod = 0
+        length = len(nums)
+
+        while r < length:
+            prod = prod + nums[r]
+            res = max(res, prod)
+            
+            if prod < 0:
+                # If the current sum is negative, reset the window
+                prod = 0
+                l = r + 1
+            
+            r += 1
+
+        return(res)
