@@ -1,0 +1,46 @@
+// Time Complexity :O(n) 
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+// Your code here along with comments explaining your approach:
+
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int n = nums.length;
+        int actionIndex = -1;// to find action element
+        for (int i = n - 1; i > 0; i--) {// O(n)
+            if (nums[i - 1] < nums[i]) {// checking for action element
+                actionIndex = i - 1;
+                break;
+            }
+        }
+        // to find element which is just greater than action element
+        if (actionIndex != -1) {
+            int i = n - 1;
+            while (nums[i] <= nums[actionIndex]) {// O(n)
+                i--;
+            }
+            int find = i;
+            swap(nums, actionIndex, find);//swapping action and next greater elemetn than action as we need to form next permutation only
+        }
+
+        reverse(nums, actionIndex + 1, n - 1);//then reversing array from next to action element to n
+    }
+
+    public void swap(int[] nums, int i, int j) {// O(1)
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public void reverse(int nums[], int left, int right) {// O(n)
+        while (left < right) {
+            int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
+        }
+    }
+}
