@@ -1,0 +1,64 @@
+// Time Complexity :O(n)+O(nlogn)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+// Your code here along with comments explaining your approach:
+
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        int n = nums.length;
+        int result = 0;
+        // sorting the array
+        Arrays.sort(nums);// nlogn
+        for (int i = 0; i < n; i += 2) {// O(n)
+            result += nums[i];// adding alternate elements to results as we need to consider min of pair
+        }
+        return result;
+    }
+}
+
+
+// Time Complexity :O(n)+O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+// Your code here along with comments explaining your approach:
+
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        int n = nums.length;
+        int result = 0;
+        int min = Integer.MAX_VALUE;//to track min for bucket sort
+        int max = Integer.MIN_VALUE;//to track max for bucket sort
+        //frequency map
+        HashMap<Integer, Integer> sMap = new HashMap<>();//O(n)
+        // bucket sorting
+        for (int i = 0; i < n; i++) {//O(n)
+            min = Math.min(min, nums[i]);
+            max = Math.max(max, nums[i]);
+            sMap.put(nums[i], sMap.getOrDefault(nums[i], 0) + 1);//updating frequency
+        }
+        boolean flag = true;
+        int i = min;
+        while (i <= max) {//O(n)
+            if (sMap.containsKey(i)) {
+            if (!flag) {
+                sMap.put(i, sMap.getOrDefault(i,0) - 1);//if we dont choose elemtn just decrese the frequncey
+                flag = true;//making true to choose next element
+            }
+            if (flag) {
+                int freq = sMap.get(i);
+                boolean isEven = freq % 2 == 0;//checking for even or odd
+                result += freq / 2 * i;//adding module of 2 times
+                if (!isEven) { //if it is odd adding one time extra
+                    result += i;
+                    flag=false; //making next element false to choose as odd we are considering last element as well
+                }
+            }
+            }
+           i++; //incrementing i
+        }
+        return result;
+
+    }
+}
