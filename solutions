@@ -1,0 +1,116 @@
+## Problem1
+ class Solution {
+
+
+    public int arrayPairSum(int[] nums) {
+
+        Arrays.sort(nums);
+
+        if(nums.length==2){
+
+            return Math.min(nums[0],nums[1]);
+
+        }
+        if(nums.length<2){
+
+            return 0;
+
+        }
+
+        int sum=0;
+
+        for(int i=0;i<nums.length;i=i+2){
+            sum+=nums[i];
+
+        }
+
+        return sum;
+
+    }
+
+
+} 
+
+## Problem2
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+
+        int sum=Integer.MIN_VALUE;
+
+        if(nums.length==0){
+
+            return Integer.MIN_VALUE;
+
+        }
+        if(nums.length==1){
+
+            return nums[0];
+        }
+        int[] dp=new int[nums.length];
+
+        dp[0]=nums[0];
+        int max=dp[0];
+        for(int i=1;i<nums.length;i++){
+
+            dp[i]=nums[i]+(dp[i-1]>0?dp[i-1]:0);
+
+            max=Math.max(max,dp[i]);
+        }
+        return max;
+
+}
+
+} 
+
+## Problem3
+class Solution {
+    public void nextPermutation(int[] nums) {
+
+        if(nums.length==0){
+
+            return;
+        }
+        int i=nums.length-2;
+        while(i>=0 && nums[i+1]<=nums[i]){
+             i--;
+
+        }
+
+        if(i>=0){
+        int j=nums.length-1;
+
+            while(j>=0&&nums[j]<=nums[i]){
+              j--;
+
+            }
+            swap(nums,i,j);
+        }
+
+        reverse(nums,i+1,nums.length-1);
+    }
+
+    public void swap(int[] nums,int i, int j){
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
+    }
+
+
+    public void reverse(int[] nums, int i, int j){
+
+        while(i<j){
+
+            swap(nums,i,j);
+
+            i++;
+            j--;
+
+
+        }
+
+
+    }
+} 
+
+
