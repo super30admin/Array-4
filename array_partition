@@ -1,0 +1,16 @@
+//Time: O(n log n)
+//Space: O(1)
+
+class Solution(object):
+    def arrayPairSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums.sort()
+        total = 0
+        i = 0
+        while i < len(nums):
+            total += nums[i]
+            i = i + 2  
+        return total
