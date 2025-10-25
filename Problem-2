@@ -1,0 +1,28 @@
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+// Keep track of the surrent sum when iterating through the array
+// At every index check if the current number or the sum of current number and current sum is higher
+// Return the max sum
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int l = 0;
+        int n = nums.length;
+        int sum = Integer.MIN_VALUE;
+        int currSum = 0;
+        for(int i = 0; i < n; i++) {
+            // if number is greater start a new subarray sum
+            if(nums[i] > nums[i] + currSum)
+                currSum = nums[i];
+            else
+                currSum += nums[i];
+
+            // Update maximum sum value
+            if(currSum > sum) {
+                sum = currSum;
+            }
+        }
+        return sum;
+    }
+}

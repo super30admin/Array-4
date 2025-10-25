@@ -1,0 +1,50 @@
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+// Start from the last index of the array to find the first element that is lesser than its next element
+// Swap the element with the first greater element when checking from the end of the array
+// Reverse the elements after the swap index to get the next permutation
+
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int n = nums.length;
+        int index = -1;
+
+        // Find the index to swap
+        for(int i = n-2; i >= 0; i--) {
+            if(nums[i] < nums[i+1]) {
+                index = i;
+                break;
+            }
+        }
+
+        // Current permutation is the last one, hence reverse the array to get the first permutation
+        if(index == -1) {
+            reverse(nums, 0, n-1);
+            return;
+        }
+
+        // Swap the index and reverse the elements after it
+        for(int i = n-1; i >= 0; i--) {
+            if(nums[i] > nums[index]) {
+                swap(nums, i, index);
+                reverse(nums, index+1, n-1);
+                break;
+            }
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    private void reverse(int[] nums, int start, int end) {
+        while(start < end) {
+            swap(nums, start, end);
+            start++;
+            end--;
+        }
+    }
+}
